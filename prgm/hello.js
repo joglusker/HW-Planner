@@ -10,8 +10,7 @@ fs.readFile('index.html', (err, html) => {
 	const server = http.createServer((req, res) => {
 	res.statusCode = 200;
 	res.setHeader('Content-type', 'text/html');
-	res.write(html
-	);
+	res.write(html);
 	res.end(/*'Hello World I can\'t believe this actually works!'*/);
 });
 server.listen(port, hostname, () => {
