@@ -1,0 +1,15 @@
+{
+  "name": "planner",
+  "version": "1.0.0",
+  "description": "Homework Planner",
+  "main": "hello.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "joglusker"
+  },
+  "author": "Joe Glusker",
+  "license": "ISC"
+}
