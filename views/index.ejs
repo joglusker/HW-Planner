@@ -1,5 +1,14 @@
 <% include partials/header %>
  <h1>Add Student</h1>
+ 
+ <% if (errors){ %>
+ <ul>
+ <% errors.forEach(function(error){ %>
+	<li> <%= error.msg %></li>
+<% }) %>
+</ul>
+ <% } %>
+ 
  <form method="POST" action="/users/add">
  
  <label>First Name</label><br>
