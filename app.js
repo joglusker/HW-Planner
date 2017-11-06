@@ -2,7 +2,8 @@ var express = require ('express');
 var bodyParser = require ('body-parser');
 var path = require ('path');
 var expressValidator = require ('express-validator');
-
+var mongojs = require('mongojs');
+var db = mongojs('test', ['users']);
 var app = express();
 var i = 0;
 var logger = function(req, res, next){
@@ -48,32 +49,17 @@ app.use(expressValidator({
 	}
 	}));
 
-var users = [
-	{
-		id: 244795738,
-		first_name: 'Peter',
-		last_name: 'Glusker',
-		email: 'johndoe@gmail.com',
-	},
-	{
-		id: 448905772,
-		first_name: 'Bob',
-		last_name: 'Appleseed',
-		email: 'bobappleseed@gmail.com',
-	},
-	{
-		id: 382567744,
-		first_name: 'Steve',
-		last_name: 'Bernstein',
-		email: 'steveberbstein@gmail.com',
-	}
-]
 
 app.get('/', function(req, res){
-	res.render('index', {
+	// find everything
+db.users.find(function(err, docs) {
+    console.log(docs);
+    res.render('index', {
 		title: 'Student Accounts:',
-		users: users
+		users: docs
 	});
+});
+	
 });
 
 app.post('/users/add', function(req, res){
@@ -108,4 +94,3 @@ console.log('USER CREATED = SUCCESS');
 app.listen(3000, function(){
 console.log('Server started on port 3000');
 });
-
