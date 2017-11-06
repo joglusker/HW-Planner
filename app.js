@@ -86,9 +86,13 @@ var errors = req.validationErrors();
 	email: req.body.email,
 	id: req.body.id,
 }
-console.log('USER CREATED = SUCCESS');
-}
-
+	db.users.insert(newUser, function(err, result){
+		if(err){
+			console.log(err);
+				}
+		res.redirect('/');
+	});
+	}
 });
 
 app.listen(3000, function(){
