@@ -5,6 +5,7 @@ var expressValidator = require ('express-validator');
 var mongojs = require('mongojs');
 var db = mongojs('test', ['users']);
 var app = express();
+var ObjectId = mongojs.ObjectId;
 var i = 0;
 var logger = function(req, res, next){
 i++;
@@ -23,7 +24,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 
 //Set static path
-//app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public')));
 
 //Global Variables
 app.use(function(req, res, next){
@@ -93,6 +94,16 @@ var errors = req.validationErrors();
 		res.redirect('/');
 	});
 	}
+});
+
+app.delete('/users/delete/:id', function(req, res){
+	console.log(req.params.id);
+	db.users.remove({_id: ObjectId(req.params.id)}, function(err, result){
+		if(err){
+			console.log(err);
+		}
+		res.redirect(' /');
+	});
 });
 
 app.listen(3000, function(){
