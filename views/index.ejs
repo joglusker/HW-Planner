@@ -35,7 +35,9 @@
 <h1><%= title %></h1>
 <ul>
 <% users.forEach(function(user){ %>
-	<li> <%= user.last_name %>, &nbsp <%= user.first_name %> &nbsp OSIS: <%= user.id %></li>
+	<li> <%= user.last_name %>, &nbsp <%= user.first_name %> 
+	&nbsp OSIS: <%= user.id %> - <a href="#" 
+	class="deleteUser" data-id="<%= user._id %>">Delete</a></li>
 <% }) %>
 </ul>
 <% include partials/footer %>
