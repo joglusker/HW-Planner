@@ -106,6 +106,38 @@ app.delete('/users/delete/:id', function(req, res){
 	});
 });
 
+//USER CREATES A CLASS 		WIP
+
+
+app.post('/class/add', function(req, res){
+
+//req.checkBody('class_name', 'Class name required').notEmpty();
+//req.checkBody('period', 'Start time required').notEmpty();
+
+var errors = req.validationErrors();
+
+	if(errors){
+	console.log('USERS CLASS CREATED = ERROR');
+	res.render('index', {
+		title: 'Student Accounts:',
+		users: users,
+		errors: errors
+	});
+	} else {
+///////////////////////
+/*db.users.update({'_id' : ObjectId(req.params.id)}, 
+                     {'$set' : { var class = [
+                     	class_name: req.body.class_name,
+						period: req.body.period] }})*/
+/////////////////////////	
+	
+	}
+	
+}); 
+
+
+//SERVER START + LISTEN SETUP
+
 app.listen(3000, function(){
 console.log('Server started on port 3000');
 });
