@@ -96,6 +96,45 @@ var errors = req.validationErrors();
 	}
 });
 
+
+
+
+
+
+
+app.post('/users/add', function(req, res){
+
+var errors = req.validationErrors();
+
+	if(errors){
+	console.log('CLASS CREATED = ERROR');
+	res.render('index', {
+		title: 'Student Accounts:',
+		//users: users,
+		errors: errors
+	});
+	} else {
+
+	var newClass = {
+	class_name: req.body.class_name,
+	start_time: req.body.start_time,
+	end_time: req.body.end_time,
+	id: req.body.user_id,
+}
+	db.classes.insert(newClass, function(err, result){
+		if(err){
+			console.log(err);
+				}
+		res.redirect('/');
+	});
+	}
+});
+
+
+
+
+
+
 app.delete('/users/delete/:id', function(req, res){
 	console.log(req.params.id);
 	db.users.remove({_id: ObjectId(req.params.id)}, function(err, result){
