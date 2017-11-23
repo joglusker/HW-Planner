@@ -1,0 +1,83 @@
+<% include partials/header %>
+ <h1>Add Student</h1>
+ 
+ <% if (errors){ %>
+ <ul>
+ <% errors.forEach(function(error){ %>
+	<li> <%= error.msg %></li>
+<% }) %>
+</ul>
+ <% } %>
+ 
+ <form method="POST" action="/users/add">
+ 
+ <label>First Name</label><br>
+ <input type = "text" name = "first_name">
+ <br>
+ 
+ <label>Last Name</label><br>
+ <input type = "text" name = "last_name">
+ <br>
+ 
+ <label>Email</label><br>
+ <input type = "text" name = "email">
+ <br>
+ <label>OSIS #</label>
+ <br>
+ <input type = "text" name = "id">
+ 
+ 
+ <br>
+ <br>
+ 
+ <input type = "submit" value = "Submit">
+ </form>
+
+
+ <br>
+ <br>
+ <h1>Add Class</h1>
+
+
+<form method="POST" action="/class/add">
+ 
+ <label>Class Name</label><br>
+ <input type = "text" name = "class_name">
+ <br>
+ <label>Start Time</label><br>
+ <input type = "number" name = "start_time">
+ <br>
+ <label>End Time</label><br>
+ <input type = "number" name = "end_time">
+ <br>
+ <label>OSIS</label><br>
+ <input type = "number" name = "user_id">
+ <br>
+ <br>
+ 
+ <input type = "submit" value = "Submit">
+ </form>
+
+
+<h1><%= title %></h1>
+<ul>
+<% users.forEach(function(user){ %>
+	<li> <%= user.last_name %>, &nbsp <%= user.first_name %> 
+	&nbsp OSIS: <%= user.id %> - <a href="#" 
+	class="deleteUser" data-id="<%= user._id %>">Delete</a></li>
+<% }) %>
+</ul>
+
+<h1><Classes></h1>
+<ul>
+<% classes.forEach(function(class){ %>
+	<li> <%= class.start_time %>, &nbsp <%= class.end_time %> 
+	&nbsp OSIS: <%= class.user_id %>
+	</li>
+<% }) %>
+</ul>
+
+
+<% include partials/footer %>
+
+
