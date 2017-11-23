@@ -102,7 +102,7 @@ var errors = req.validationErrors();
 
 
 
-app.post('/users/add', function(req, res){
+app.post('/class/add', function(req, res){
 
 var errors = req.validationErrors();
 
